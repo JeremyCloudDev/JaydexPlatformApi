@@ -509,3 +509,4 @@ appsettings.json
 # Never commit real ASP.NET configuration files
 appsettings*.json
 !appsettings.example.json
+/.github/copilot-instructions.md

@@ -1,4 +1,5 @@
 using JaydexPlatformApi.Services;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +32,14 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        "/var/lib/jaydex/platform-assets"
+    ),
+    RequestPath = "/assets"
+});
 
 app.MapControllers();
 
